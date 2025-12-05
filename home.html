@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>오컬트 & 판타지 몬스터 백과</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- 폰트 -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600&family=Cormorant+Garamond:wght@500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Noto Serif KR", serif;
+      color: #f3efe7;
+      background:
+        radial-gradient(circle at 0 0, #123b45 0, transparent 45%),
+        radial-gradient(circle at 100% 0, #123b45 0, transparent 45%),
+        radial-gradient(circle at 50% 120%, #061219 0, #02070b 60%);
+      user-select: none;
+    }
+
+    img { -webkit-user-drag: none; user-drag: none; }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 24px 56px;
+    }
+
+    /* 상단 영역 -------------------------------------------------- */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 10px;
+    }
+
+    .brand {
+      font-family: "Cormorant Garamond", "Noto Serif KR", serif;
+      font-size: 24px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #f7f2e9;
+      cursor: pointer;
+    }
+
+    .brand span {
+      display: block;
+      font-family: "Noto Serif KR", serif;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      margin-top: 3px;
+      color: #b9c6c7;
+    }
+
+    .topbar nav {
+      display: flex;
+      align-items: center;
+    }
+
+    .topbar nav a,
+    .topbar nav button {
+      margin-left: 20px;
+      font-size: 13px;
+      color: #c5d5d8;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      font-family: "Noto Serif KR", serif;
+    }
+
+    .topbar nav a:hover,
+    .topbar nav button:hover {
+      color: #e35a5a;
+    }
+
+    .top-divider {
+      height: 1px;
+      margin: 6px 0 26px;
+      background:
+        linear-gradient(90deg, transparent, #d8b26a, transparent),
+        linear-gradient(90deg, transparent, #8fd1d5, transparent);
+      opacity: 0.8;
+    }
+
+    /* 히어로 -------------------------------------------------- */
+    .hero {
+      border-radius: 26px;
+      padding: 32px 32px 30px;
+      background:
+        linear-gradient(145deg, rgba(23, 56, 64, 0.9), rgba(5, 15, 22, 0.98));
+      border: 1px solid rgba(216, 178, 106, 0.35);
+      box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(16, 53, 60, 0.7);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 1px solid rgba(143, 209, 213, 0.35);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      inset: 12px 18px;
+      border-color: rgba(128, 27, 42, 0.65);
+    }
+
+    .hero-header {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-width: 620px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-kicker {
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #8fd1d5;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.3;
+    }
+
+    .hero-sub {
+      margin: 4px 0 14px;
+      font-size: 14px;
+      color: #d3dedf;
+      line-height: 1.7;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 11px;
+    }
+
+    .hero-tag {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(216, 178, 106, 0.7);
+      color: #f4ead9;
+      background: radial-gradient(
+        circle at 30% 0,
+        rgba(216, 178, 106, 0.32),
+        rgba(0, 0, 0, 0.3)
+      );
+    }
+
+    .hero-actions {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      border: none;
+      padding: 10px 20px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+
+background 0.15s,
+        color 0.15s,
+        border-color 0.15s;
+
+
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 30% 0, #f8d9a1, #d8b26a);
+      color: #251718;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5);
+      border: 1px solid #f3d79e;
+    }
+
+    .btn-primary:hover { transform: translateY(-1px); 
+  box-shadow: 0 15px 32px rgba(0, 0, 0, 0.65);
+}
+
+    .btn-ghost {
+      background: transparent;
+      color: #e3b8c4;
+      border: 1px solid rgba(227, 90, 90, 0.66);
+    }
+
+    .btn-ghost:hover {background: rgba(227, 90, 90, 0.14);  transform: translateY(-1px); }
+
+    /* 섹션 제목 -------------------------------------------------- */
+    .section-title {
+      margin: 40px 0 12px;
+      font-size: 20px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #f3efe7;
+    position: relative;
+  padding-bottom: 8px;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 160px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(216,178,106,0),
+    rgba(216,178,106,0.7),
+    rgba(216,178,106,0)
+  );
+  box-shadow: 0 0 8px rgba(216,178,106,0.4);
+}
+
+    .section-sub {
+      font-size: 13px;
+      color: #c2d3d4;
+      margin-bottom: 18px;
+    }
+
+    /* 카드 그리드 -------------------------------------------------- */
+    .monster-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .filter-pill {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(143, 209, 213, 0.5);
+      background: rgba(3, 20, 24, 0.7);
+      color: #cbe4e7;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .filter-pill.active {
+      border-color: rgba(227, 90, 90, 0.9);
+      background: radial-gradient(
+        circle at 30% 0,
+        rgba(227, 90, 90, 0.7),
+        rgba(3, 10, 16, 0.96)
+      );
+      color: #fff;
+    }
+
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 10px;
+    }
+
+    .card {
+      position: relative;
+      padding: 16px 16px 14px;
+      border-radius: 18px;
+       background:
+        radial-gradient(
+          circle at 0 0,
+          rgba(143, 209, 213, 0.12),
+          transparent 60%
+        ),
+radial-gradient(
+          circle at 100% 100%,
+          rgba(227, 90, 90, 0.16),
+          transparent 55%
+        ),
+ rgba(3, 16, 22, 0.95);
+      border: 1px solid rgba(44, 92, 100, 0.95);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.55);
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform 0.15s ease,  box-shadow 0.15s ease,
+        border-color 0.15s;
+
+    }
+
+   .card::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border-radius: 12px;
+      border: 1px solid rgba(216, 178, 106, 0.35);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+
+
+
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.7);
+      border-color: rgba(227, 90, 90, 0.9);
+    }
+
+//카드 흔들리게 하는 효과
+.card:nth-child(3n-1):hover { transform: translateY(-6px) rotate(-0.4deg); }
+.card:nth-child(3n):hover   { transform: translateY(-6px) rotate(0.4deg); }
+
+
+
+    .card-img {
+position: relative;
+      width: 100%;
+      aspect-ratio: 8 / 13;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    .card-type {
+position: relative;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #8fd1d5;
+      margin-bottom: 6px;
+    }
+
+    .card-name {
+position: relative;
+      font-size: 17px;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .card-tagline {
+position: relative;
+      font-size: 12px;
+      color: #d6e3e4;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .card-meta {
+position: relative;
+      display: flex;
+      justify-content: flex-end;
+align-items: center;
+      font-size: 11px;
+      color: #c3cfcf;
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .card-tag {
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(5, 34, 40, 0.9);
+      border: 1px solid rgba(143, 209, 213, 0.4);
+      color: #9fdbe0;
+    }
+
+    /* info-section ------------------------------------------------ */
+    .info-section {
+      margin-top: 40px;
+      padding: 22px 26px;
+      border-radius: 22px;
+      background: rgba(4, 18, 24, 0.9);
+      border: 1px solid rgba(216, 178, 106, 0.4);
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55);
+      text-align: center;
+ transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        background 0.18s ease;
+
+    }
+
+
+ .info-section:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 38px rgba(0, 0, 0, 0.8);
+      background: rgba(4, 22, 30, 0.96);
+    }
+
+
+
+    .info-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #f4e1b3;
+      margin-bottom: 8px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .info-body {
+      font-size: 13px;
+      color: #d6e0e1;
+      line-height: 1.9;
+    }
+
+.footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 12px;
+      color: #789093;
+    }
+
+
+
+.desc-text {
+  white-space: pre-line;
+  line-height: 1.8;
+  word-break: break-word;
+  padding-right: 6px;
+}
+.desc-text br {
+  content: "";
+  display: block;
+  margin-bottom: 12px;
+}
+
+
+
+
+
+    /* 모달 ------------------------------------------------------- */
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.18s ease;
+      z-index: 1000;
+    }
+
+
+ 
+//모달 배경에 움직이는 극미세 노이즈 추가
+.modal::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    repeating-radial-gradient(
+      circle at 20% 30%,
+      rgba(216,178,106,0.015),
+      rgba(216,178,106,0.015) 1px,
+      transparent 2px,
+      transparent 6px
+    );
+  animation: arcaneFlow 18s linear infinite;
+  pointer-events: none;
+  opacity: 0.35;
+  z-index: 0;
+}
+
+@keyframes arcaneFlow {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-120px); }
+}
+
+
+
+
+    .modal.show {
+      pointer-events: auto;
+      opacity: 1;
+    }
+
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+ .modal-panel {
+  position: relative;
+  background: #050c11;
+  border-radius: 22px;
+  padding: 20px 22px 22px;
+  width: 90%;
+  max-width: 820px;
+
+  max-height: 90vh;        /* ★ 화면 높이 안으로 가두기 */
+  overflow: hidden;        /* 패널 밖으로 내용 튀어나오지 않게 */
+
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(216, 178, 106, 0.7);
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  color: #f3efe7;
+
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(216,178,106,0.06), transparent 60%),
+    radial-gradient(circle at 80% 70%, rgba(143,209,213,0.04), transparent 60%);
+}
+
+
+
+
+
+.modal-scroll-area {
+  flex: 1;
+  overflow-y: auto;      /* ★ 이 영역만 스크롤 */
+  padding-right: 14px;
+  min-height: 0;
+}
+
+/* 모달 전용 스크롤 디자인 */
+.modal-scroll-area::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-scroll-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+.modal-scroll-area::-webkit-scrollbar-thumb {
+  background: rgba(216,178,106,0.35);
+  border-radius: 6px;
+}
+.modal-scroll-area::-webkit-scrollbar-thumb:hover {
+  background: rgba(216,178,106,0.55);
+}
+
+
+
+
+    .modal-close {
+      position: absolute;
+      right: 14px;
+      top: 8px;
+      border: none;
+      background: transparent;
+      font-size: 22px;
+      cursor: pointer;
+      color: #a3b8ba;
+    }
+
+
+
+.modal-close:hover {
+      color: #ffffff;
+    }
+
+    @media (max-width: 700px) {
+      .page {
+        padding: 18px 16px 40px;
+      }
+      .hero {
+        padding: 24px 20px 22px;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      .topbar nav a,
+      .topbar nav button {
+        margin-left: 12px;
+        font-size: 11px;
+      }
+    }
+
+
+
+
+  .modal-content {
+  display: flex;          /* 좌우 배치 */
+  gap: 20px;
+  align-items: flex-start;
+
+  height: 72vh;           /* ★ 모달 안 “내용 전체” 높이 고정 */
+  min-height: 0;          /* 내부 스크롤이 먹도록 */
+}
+
+
+
+
+
+
+
+ .modal-image-wrap {
+  width: 38%;        /* 기존 그대로 */
+  max-width: 320px;
+  flex-shrink: 0;
+
+  height: 100%;      /* ★ modal-content의 높이(72vh)를 그대로 따라가게 */
+}
+
+
+
+
+    .modal-image {
+      width: 100%;
+height: 100%;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid rgba(216,178,106,0.45);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+    }
+
+  .modal-text {
+  flex: 1;                      /* 오른쪽 열 전체 */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;      /* 텍스트 왼쪽 정렬 */
+  gap: 8px;
+  min-height: 0;                /* 안쪽 스크롤을 위해 꼭 필요 */
+height: 100%
+}
+
+
+
+
+    .modal-type {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #8fd1d5;
+    }
+
+    .modal-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: #f3efe7;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.35);
+    }
+
+    .modal-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 11px;
+    }
+
+    .modal-tag {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(227, 90, 90, 0.7);
+      color: #ffd8da;
+    }
+
+
+
+
+
+
+
+
+/* 특징 / 사냥법 / 기원 박스 */
+.detail-section {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(6, 20, 26, 0.9);
+  border: 1px solid rgba(216, 178, 106, 0.35);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.55);
+margin-bottom: 18px;
+}
+
+.detail-title {
+  position: relative;
+  padding-left: 20px;
+
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #f4e1b3;
+
+  /* 제목 아래 간격 — 기존보다 살짝 좁게 */
+  margin-bottom: 4px;    
+
+  /* 제목과 본문 사이에 들어가는 옅은 금빛 그라데이션 라인 */
+  padding-bottom: 2px;   
+  border-bottom: 0;
+   /* fade-in 애니메이션 */
+  opacity: 0;
+  animation: fadeTitle 0.6s ease forwards;    
+}
+@keyframes fadeTitle {
+  0% { opacity: 0; transform: translateY(-4px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.detail-title::before {
+  /* 왼쪽 장식 기호 */
+  content: "✦";
+  position: absolute;
+  left: 0;
+  top: 0px;
+  font-size: 12px;
+  color: rgba(216, 178, 106, 0.9);
+
+  /* 아주 은은한 발광 효과 → 입체감 & 강조 */
+  text-shadow: 0 0 6px rgba(216, 178, 106, 0.5);
+}
+
+/* 제목 아래의 옅은 그라데이션 라인 */
+.detail-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(216, 178, 106, 0) 0%,
+    rgba(216, 178, 106, 0.4) 50%,
+    rgba(216, 178, 106, 0) 100%
+  );
+ opacity: 1;
+ transition: opacity 0.3s;
+
+  /* 양 끝 흐려지는 금빛 라인 */
+  background: linear-gradient(
+    90deg,
+    rgba(216, 178, 106, 0) 0%,
+    rgba(216, 178, 106, 0.35) 50%,
+    rgba(216, 178, 106, 0) 100%
+  );
+}
+
+.detail-text {
+  font-size: 13px;
+  color: #dde5e6;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+    
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- 헤더 -->
+    <header class="topbar">
+      <div class="brand" id="brand-to-top">
+        OCCULT BESTIARY
+        <span>오컬트 & 판타지 몬스터 백과</span>
+      </div>
+      <nav>
+        <a href="#monsters">몬스터 도감</a>
+        <a href="#about-world">세계관</a>
+        <a href="https://tumblbug.com" target="_blank">텀블벅</a>
+        <button id="logout-btn">로그아웃</button>
+      </nav>
+    </header>
+
+    <div class="top-divider"></div>
+
+    <!-- 히어로 포함 유지 -->
+
+    <!-- 히어로 -->
+    <section class="hero">
+      <div class="hero-header">
+        <div class="hero-kicker">ARCANE BESTIARY FILE</div>
+        <h1>차원 틈에서 흘러 들어온<br>몬스터들의 비밀 기록</h1>
+        <p class="hero-sub">
+          이 페이지는 네 소설 세계관 속에 존재하는 모든 오컬트·판타지 몬스터를 정리하는
+          “디지털 그리모와르”다. 각 개체의 상징, 서식, 약점, 금기와 의식을 한 곳에 모아
+          작가인 너와 독자 모두가 참고할 수 있는 몬스터 백과로 쓰인다.
+
+        </p>
+
+        <div class="hero-tags">
+          <span class="hero-tag">DARK FANTASY</span>
+          <span class="hero-tag">OCCULT SYMBOLISM</span>
+          <span class="hero-tag">MONSTER ENCYCLOPEDIA</span>
+        </div>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="scroll-to-monsters">몬스터 도감 보기</button>
+          <button class="btn btn-ghost" id="scroll-to-world">세계관 설명 먼저 읽기</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 몬스터 도감 -->
+    <section id="monsters">
+      <h2 class="section-title">MONSTER INDEX</h2>
+      <p class="section-sub">
+        카드를 클릭하면 상세 정보가 표시된다.
+      </p>
+
+      <div class="monster-controls">
+        <button class="filter-pill active" data-filter="all">전체</button>
+        <button class="filter-pill" data-filter="인간형">인간형</button>       
+        <button class="filter-pill" data-filter="악마">악마/지옥형</button>
+        <button class="filter-pill" data-filter="정령">정령/요정형</button>
+<button class="filter-pill" data-filter="고대">고대괴수/이형생물</button>
+<button class="filter-pill" data-filter="아시아">아시아 전승</button>
+<button class="filter-pill" data-filter="초월">초월/정신계열</button>
+<button class="filter-pill" data-filter="현대">현대오컬트/괴담형</button>
+      </div>
+
+      <div class="cards-container" id="cards-container"></div>
+
+    </section>
+
+    <!-- WORLD SETTING -->
+    <section id="about-world" class="info-section">
+      <div class="info-title">WORLD SETTING</div>
+      <div class="info-body">
+         이 몬스터 백과는 하나의 작품이 아니라, 네가 쓰는 모든 시리즈에 공통으로 흐르는
+        “세계의 밑바닥 규칙”을 기록하는 용도다.<br>
+        각 개체의 기원, 소속 차원, 계약 방식, 금기를 일관된 양식으로 정리해 두면
+        후속권에서 설정이 꼬이는 일을 줄이고, 독자가 느끼는 세계의 깊이도 훨씬 풍부해진다.
+
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about-author" class="info-section">
+      <div class="info-title">ABOUT 작가</div>
+      <div class="info-body">
+        오컬트 상징과 장르 문법을 사랑하는 웹소설 작가.<br>
+        이 페이지는 “설정 노트”와 “홍보용 아트북” 사이 어딘가에 놓인 혼종을 목표로 한다.
+        독자는 몬스터 도감을 탐험하면서 동시에 이야기에 사전적으로 침투하게 된다.
+      </div>
+    </section>
+
+    <footer class="footer">
+      © 2025 Occult &amp; Fantasy Monster Bestiary. All rights reserved.
+    </footer>
+  </div>
+
+  <!-- 모달 --------------------------------------------------------- -->
+  <div class="modal" id="monster-modal">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+
+    <div class="modal-panel">
+      <button class="modal-close" id="modal-close">&times;</button>
+
+      <div class="modal-content">
+        <!-- 왼쪽 이미지 -->
+        <div class="modal-image-wrap">
+          <img id="modal-image" class="modal-image" alt="" />
+        </div>
+
+        <!-- 오른쪽 텍스트 -->
+        <div class="modal-text">
+          <div class="modal-type" id="modal-type"></div>
+          <div class="modal-title" id="modal-title"></div>
+          <div class="modal-tags" id="modal-tags"></div>
+          <div class="modal-scroll-area" id="modal-scroll-area">
+  <div class="detail-section">
+    <div class="detail-title">특징</div>
+    <div class="detail-text" id="detail-feature"></div>
+  </div>
+
+  <div class="detail-section">
+    <div class="detail-title">사냥법</div>
+    <div class="detail-text" id="detail-hunt"></div>
+  </div>
+
+  <div class="detail-section">
+    <div class="detail-title">기원</div>
+    <div class="detail-text" id="detail-origin"></div>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT ------------------------------------------------------ -->
+  <script>
+    /* 로그인 체크 */
+    if (sessionStorage.getItem("isSupporter") !== "1") {
+      window.location.href = "index.html";
+    }
+
+ // ----------- 스크롤 / 네비게이션 -----------
+   document.getElementById("brand-to-top").addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    document.getElementById("scroll-to-monsters").addEventListener("click", () => {
+      document.getElementById("monsters").scrollIntoView({ behavior: "smooth" });
+    });
+
+    document.getElementById("scroll-to-world").addEventListener("click", () => {
+      document.getElementById("about-world").scrollIntoView({ behavior: "smooth" });
+    });
+
+    document.getElementById("logout-btn").addEventListener("click", () => {
+      sessionStorage.removeItem("isSupporter");
+      window.location.href = "index.html";
+    });
+
+
+document.addEventListener("contextmenu", function (e) {
+  e.preventDefault();
+});
+
+
+    /* 몬스터 데이터 (내부 정의) */
+     const monsters = [
+      {
+        name: "뱀파이어",
+        category: "인간형",                      // 필터용
+        type: "인간형",           // 카드 상단에 보이는 텍스트
+        img: "images/01vampire.jpeg",
+        short: "밤을 지배하는 흡혈의 포식자.",
+        keywords: ["인간형", "불사", "흡혈"],
+        description: {
+          "특징": "\n 사람처럼 생겼지만, 피를 마시며 사는 죽지 않는 존재로 알려져 있다. 햇빛을 싫어해서 보통 밤에만 활동하고, 해가 뜨면 관이나 지하실 같은 어두운 곳으로 들어간다. \n \n 전통적인 이야기에서는 창백한 피부, 차가운 몸, 붉게 빛나는 눈, 그리고 길고 날카로운 송곳니가 있다고 묘사된다. 거울에 모습이 비치지 않거나, 집 안으로 들어가려면 주인의 허락을 받아야 한다는 설정도 자주 나온다. 어떤 전승에서는 박쥐, 늑대, 안개 같은 모습으로 변신할 수 있고, 사람의 정신을 홀려 조종하기도 한다.",
+          "사냥법": "\n 뱀파이어는 직사광선, 특히 태양빛에 매우 약한 존재로, 햇빛에 오래 노출되면 몸이 타버리거나 재가 된다고 전해진다. \n \n 십자가, 성수(축복된 물), 성당 종소리 같은 성스러운 상징에 약해서, 가까이 다가가기도 힘들어 한다. \n \n 많은 이야기에서 심장에 말뚝을 박는 것이 뱀파이어를 움직이지 못하게 만드는 방법으로 등장한다. \n \n 땅속에 묻힌 뱀파이어를 완전히 없애기 위해 머리를 잘라 몸에서 분리하거나, 불로 태우는 의식이 함께 쓰이기도 한다.  \n \n 문턱을 넘어오려면 초대가 필요하다는 설정이 있을 경우, 절대 초대하지 않는 것이 가장 쉬운 예방책으로 여겨진다.",
+          "기원": "\n 뱀파이어 전승의 뿌리는 유럽, 특히 동유럽과 발칸 반도의 민담에서 많이 나온다. 옛 사람들은 원한을 품고 죽은 사람, 장례 의식을 제대로 치르지 못한 사람, 자살자, 전염병의 첫 희생자 같은 이들이 죽은 뒤 돌아와 산 사람의 피를 마신다고 믿었다. \n \n 중세에는 원인을 모르는 전염병이나 시체의 부패 흔적(입 주변의 피, 부풀어 오른 몸)을 보고, 사람들이 **“무덤에서 일어나 피를 마신 흔적”**이라고 오해하면서 뱀파이어 이야기가 더 퍼졌다. \n \n 오늘날 우리가 아는 “귀족풍의 뱀파이어” 이미지는 19세기 소설들(예를 들어 『드라큘라』)이 옛 민담과 당시 귀족 문화를 섞어서 만들어낸 모습이 뿌리가 되어 자리 잡은 것이다."
+        }
+      },
+
+      {
+        name: "구울",
+        category: "인간형",
+        type: "일단 / 비워둠",
+        img: "images/02ghoul.jpg",
+        short: "무덤과 전장을 떠도는 시체 포식자.",
+        keywords: ["언데드", "시체 포식", "야행성"],
+        description: {
+          "특징": "무덤, 공동묘지, 전쟁터 같은 곳에 숨어 지내며 시체를 먹는 괴물로 알려져 있다. 원래는 아랍 지역의 전승에서 나온 존재로, 사막이나 폐허에서 사람을 잡아먹는 짐승 같은 요괴로 묘사되곤 한다. 구울은 몸이 마르고, 피부는 잿빛 또는 누렇게 썩은 색, 눈은 움푹 들어가 있으며, 긴 팔다리와 날카로운 손톱을 가지고 있는 모습으로 그려진다. 사람의 목소리를 흉내 내서 도움을 청하는 척 하다가, 다가온 여행자나 어린아이를 덮치는 이야기도 있다.",
+          "사냥법": "구울은 강한 냄새와 빛에 민감하다고 알려져, 성스러운 향, 향불, 불꽃을 이용해 몰아내는 이야기가 전해진다. 주로 밤에 움직이고 낮에는 힘이 약해진다고 여겨져, 낮에 무덤을 정리하고 시체를 잘 매장하는 것이 가장 중요한 예방책으로 강조된다. 어떤 설화에서는 구울이 쇠사슬, 철제 무기 같은 금속에 약하다고 해서, 철로 된 무기를 들고 싸우면 상처를 입힐 수 있다고 전한다. 구울이 먹을 시체를 찾지 못하면 힘을 쓰지 못하므로, 땅속을 파헤치지 못하게 무덤을 단단히 봉하는 것도 방어 방법으로 나온다.",
+          "기원": "구울이라는 말은 아랍어 **“굴(ġūl)”**에서 왔고, 원래는 사막이나 황야에서 길 잃은 여행자를 잡아먹는 요괴를 가리켰다. 전쟁과 전염병으로 시체가 많이 쌓인 곳에서, 누군가 시체를 훼손하거나 훔쳐 가는 사건이 생기면 사람들은 그 모습을 상상해서 “시체를 파먹는 괴물” 이야기를 만들어 냈다. 무덤을 함부로 파헤치지 못하게 하거나, 밤에 위험한 곳을 돌아다니지 못하게 하려는 경고와 교육의 의미가 섞이면서, 구울 전설이 아이들에게까지 퍼져 전해졌다. 시간이 지나면서 서양 공포 작품 속에서는 좀비와 비슷하지만 더 교활하고 빠른 언데드 이미지로 변형되어, 현대적인 구울 캐릭터의 바탕이 되었다."
+        }
+      },
+
+      {
+        name: "레버넌트",
+        category: "인간형",
+        type: "언데드 / 복수혼",
+        img: "images/03revenant.jpeg",
+        short: "죽음에서 돌아온 복수의 망령.",
+        keywords: ["복수", "원혼", "언데드"],
+        description: {
+          "특징": "레버넌트는 영어로 **“되돌아온 자”**라는 뜻으로, 죽었어야 할 사람이 다시 돌아와 움직이는 존재를 가리킨다. 뱀파이어처럼 피를 마시지 않을 수도 있고, 좀비처럼 생각 없이 움직이지도 않는다. 보통은 생전에 가졌던 기억과 감정을 어느 정도 유지한 채 돌아오는 것으로 묘사된다. 특히 강한 원한, 복수심, 미련 때문에 무덤에서 일어나, 자신을 해친 사람이나 마을 사람들을 괴롭히는 모습이 자주 등장한다. 외형은 전설마다 다르지만, 대개 죽음의 흔적이 남은 사람의 모습이고, 피부가 창백하거나 시체처럼 굳어 있으며, 눈빛이 비정상적으로 차갑거나 불타오르는 것으로 표현된다.",
+          "사냥법": "레버넌트는 단순히 몸을 파괴하는 것만으로는 해결되지 않고, 그를 돌아오게 만든 원인을 풀어 주어야 한다는 이야기가 많다. 어떤 전승에서는 레버넌트가 나타나는 마을에서 고해성사, 속죄 의식, 빚이나 약속을 대신 갚아주기 같은 방법을 통해, 그가 품은 한을 풀어 주면 스스로 사라진다고 전한다. 그래도 폭력적인 레버넌트는 막아야 하기 때문에, 뱀파이어처럼 무덤을 파서 시신에 못을 박거나, 머리와 몸을 분리하고 태우는 의식이 등장하기도 한다. 공동체가 함께 모여 기도를 드리거나, 성스러운 물건을 마을 둘레에 두르는 의식을 통해, 레버넌트가 마을 안으로 들어오지 못하게 하는 전승도 있다.",
+          "기원": "레버넌트 전승은 중세 유럽, 특히 영국과 프랑스, 독일 지역의 기록에서 자주 나타난다. 당시 사람들은 억울하게 죽은 사람, 제대로 장례를 치르지 못한 사람, 약속을 지키지 못한 사람이 무덤에서 나와 가족이나 이웃을 괴롭힌다고 믿었다. 전염병으로 사람들이 갑자기 많이 죽거나, 이유를 알 수 없는 사고가 이어지면, 사람들은 **“죽은 자가 다시 돌아와 벌을 준다”**고 해석하면서 이런 이야기를 더 믿게 되었다. 이런 전승은 사실상 죄책감, 미해결된 문제, 공동체의 불안 같은 감정을 상징적으로 표현한 것이라 볼 수 있고, 후대의 소설과 영화에서 복수를 위해 부활한 망령 캐릭터의 기본 모델이 되었다."
+        }
+      },
+
+{
+        name: "좀비",
+        category: "인간형",
+        type: "언데드 / 복수혼",
+        img: "images/04zombie.png",
+        short: "죽음에서 돌아온 복수의 망령.",
+        keywords: ["복수", "원혼", "언데드"],
+        description: {
+          "특징": "특정 대상에게 강한 집착을 보인다.",
+          "사냥법": "원한을 해결하지 않으면 소멸하지 않는다.",
+          "기원": "배신·살인 등의 강렬한 감정이 남은 장소에서 발생한다."
+        }
+      },
+
+{
+        name: "부두 좀비",
+        category: "인간형",
+        type: "언데드 / 복수혼",
+        img: "images/05voodoo_zombie.png",
+        short: "죽음에서 돌아온 복수의 망령.",
+        keywords: ["복수", "원혼", "언데드"],
+        description: {
+          "특징": "특정 대상에게 강한 집착을 보인다.",
+          "사냥법": "원한을 해결하지 않으면 소멸하지 않는다.",
+          "기원": "배신·살인 등의 강렬한 감정이 남은 장소에서 발생한다."
+        }
+      },
+
+{
+        name: "와이트",
+        category: "인간형",
+        type: "언데드 / 복수혼",
+        img: "images/06wight.png",
+        short: "죽음에서 돌아온 복수의 망령.",
+        keywords: ["복수", "원혼", "언데드"],
+        description: {
+          "특징": "특정 대상에게 강한 집착을 보인다.",
+          "사냥법": "원한을 해결하지 않으면 소멸하지 않는다.",
+          "기원": "배신·살인 등의 강렬한 감정이 남은 장소에서 발생한다."
+        }
+      },
+
+{
+        name: "웨어울프",
+        category: "인간형",
+        type: "언데드 / 복수혼",
+        img: "images/07werewolf.png",
+        short: "죽음에서 돌아온 복수의 망령.",
+        keywords: ["복수", "원혼", "언데드"],
+        description: {
+          "특징": "특정 대상에게 강한 집착을 보인다.",
+          "사냥법": "원한을 해결하지 않으면 소멸하지 않는다.",
+          "기원": "배신·살인 등의 강렬한 감정이 남은 장소에서 발생한다."
+        }
+      },
+
+{
+        name: "루가루",
+        category: "인간형",
+        type: "언데드 / 복수혼",
+        img: "images/08rougarou.jpeg",
+        short: "죽음에서 돌아온 복수의 망령.",
+        keywords: ["복수", "원혼", "언데드"],
+        description: {
+          "특징": "특정 대상에게 강한 집착을 보인다.",
+          "사냥법": "원한을 해결하지 않으면 소멸하지 않는다.",
+          "기원": "배신·살인 등의 강렬한 감정이 남은 장소에서 발생한다."
+        }
+      },
+
+
+
+  // 필요한 만큼 계속 추가하면 됨
+    ];
+
+    const cardsContainer = document.getElementById("cards-container");
+    const filterButtons = document.querySelectorAll(".filter-pill");
+
+    /* 렌더 */
+    function renderMonsters(filter = "all") {
+      cardsContainer.innerHTML = "";
+      const filtered = monsters.filter(m => filter === "all" ? true : m.category === filter);
+
+      filtered.forEach(monster => {
+        const card = document.createElement("article");
+        card.className = "card";
+
+        card.innerHTML = `
+          <img class="card-img" src="${monster.img}" alt="${monster.name}">
+          <div class="card-type">${monster.type}</div>
+          <div class="card-name">${monster.name}</div>
+          <div class="card-tagline">${monster.short}</div>
+          <div class="card-meta">
+            <div class="card-tags">
+               ${(monster.keywords || [])
+                .map((t) => `<span class="card-tag">${t}</span>`)
+                .join("")}
+            </div>
+          </div>
+        `;
+
+
+        card.addEventListener("click", () => openModal(monster));
+        cardsContainer.appendChild(card);
+
+      });
+    }
+
+    renderMonsters("all");
+
+     // 필터 버튼
+    filterButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        filterButtons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        const filter = btn.dataset.filter;
+        renderMonsters(filter);
+      });
+    });
+
+
+
+    /* 모달 */
+    const modal = document.getElementById("monster-modal");
+    const modalImage = document.getElementById("modal-image");
+ const modalBackdrop = document.getElementById("modal-backdrop");
+    const modalClose = document.getElementById("modal-close");
+
+    const modalTitle = document.getElementById("modal-title");
+    const modalType = document.getElementById("modal-type");
+    const modalTags = document.getElementById("modal-tags");
+    
+    function openModal(monster) {
+      modalImage.src = monster.img;
+      modalTitle.textContent = monster.name;
+      modalType.textContent = monster.type;
+
+      modalTags.innerHTML = monster.keywords
+        .map(k => `<span class="modal-tag">${k}</span>`)
+        .join("");
+
+      document.getElementById("detail-feature").textContent =
+  monster.description["특징"] || "";
+
+document.getElementById("detail-hunt").textContent =
+  monster.description["사냥법"] || "";
+
+document.getElementById("detail-origin").textContent =
+  monster.description["기원"] || "";
+
+      modal.classList.add("show");
+    }
+
+    document.getElementById("modal-close").onclick =
+      () => modal.classList.remove("show");
+    document.getElementById("modal-backdrop").onclick =
+      () => modal.classList.remove("show");
+  </script>
+</body>
+</html>
