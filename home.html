@@ -80,10 +80,7 @@
       font-family: "Noto Serif KR", serif;
     }
 
-    .topbar nav a:hover,
-    .topbar nav button:hover {
-      color: #e35a5a;
-    }
+  
 
     .top-divider {
       height: 1px;
@@ -94,6 +91,51 @@
       opacity: 0.8;
     }
 
+
+
+.nav-link {
+  position: relative;
+  color: rgba(255,255,255,0.75);
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+  transition: color 0.4s ease, text-shadow 0.35s ease;
+}
+
+.nav-link::before {
+  content: "†";
+  position: absolute;
+  left: -14px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.18;
+  color: #ff4c4c;
+  font-size: 0.75em;
+  transition: opacity 0.25s ease;
+}
+
+.nav-link:hover {
+  color: #ff4c4c;
+  text-shadow:
+    0 0 0.5px rgba(255,76,76,0.5),
+    0 0 1.5px rgba(0,0,0,0.4);
+}
+
+.nav-link:hover::before {
+  opacity: 1;
+}
+
+.nav-link.active {
+  color: #ff4c4c;
+}
+
+.nav-link.active::before {
+  opacity: 1;
+}
+
+
+
+
+
     /* 히어로 -------------------------------------------------- */
     .hero {
       border-radius: 26px;
@@ -102,8 +144,8 @@
         linear-gradient(145deg, rgba(23, 56, 64, 0.9), rgba(5, 15, 22, 0.98));
       border: 1px solid rgba(216, 178, 106, 0.35);
       box-shadow:
-        0 18px 40px rgba(0, 0, 0, 0.6),
-        0 0 0 1px rgba(16, 53, 60, 0.7);
+        0 10px 22px rgba(0, 0, 0, 0.25),
+        0 0 0 1px rgba(16, 53, 60, 0.5);
       position: relative;
       overflow: hidden;
     }
@@ -124,19 +166,84 @@
     }
 
     .hero-header {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      max-width: 620px;
-      position: relative;
-      z-index: 1;
-    }
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+
+.hero-left {
+  flex: 1 1 50%;
+  min-width: 340px;
+}
+
+.hero-right {
+  flex: 1 1 40%;
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 32px; /* 너무 위로 붙어보이면 이 값 조절하면 됨 */
+}
+
+
+@media (max-width: 900px) {
+  .hero-header {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .hero-right {
+    margin-top: 0;
+  }
+}
+
+
+.hero-motto {
+  text-align: center;         /* 텍스트 가운데 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;        /* 내부 span들도 가운데 */
+  width: 100%;
+}
+
+.hero-motto .hero-quote,
+.hero-motto .hero-quote-kor {
+  display: block;
+  text-align: center;
+  max-width: 420px;           /* 시각적 균형: 너무 넓어지지 않도록 */
+  margin: 0 auto;             /* 진짜 가운데 정렬 */
+  line-height: 1.55;
+}
+
+.hero-badge {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 12px;
+}
 
     .hero-kicker {
       font-size: 13px;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       color: #8fd1d5;
+position: relative;
+  display: inline-block;
+  background: linear-gradient(
+    to right,
+    #ffffff40 80%,
+    #d9b878 20%,
+    #ffffff40 20%,
+    transparent 140%
+  );
+  -webkit-background-clip: text;
+  color: transparent;
     }
 
     h1 {
@@ -152,23 +259,109 @@
       line-height: 1.7;
     }
 
+.hero-title {
+  font-size: 2rem !important;
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  font-family: "Cormorant Garamond", serif;
+  color: #f8f5ec;
+  margin-top: 0.6rem;
+  margin-bottom: 1.4rem;
+  text-shadow: 0 0 12px rgba(255, 245, 220, 0.18);
+}
+
+.hero-description {
+  font-size: 0.9rem !important;
+  line-height: 1.82;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  color: #d8e0df;
+  opacity: 0.92;
+}
+
+.hero-quote {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+line-height: 1.55;
+  background: linear-gradient(90deg, #f8e7c2, #d6b989, #fff3d0);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow:
+    0 0 6px rgba(255, 245, 210, 0.25),
+    0 0 12px rgba(255, 240, 200, 0.35);
+  letter-spacing: 0.6px;
+animation: subtleGlow 3.8s ease-in-out infinite;
+}
+
+.hero-quote-kor {
+  font-size: 0.7rem;
+  opacity: 0.8;
+  margin-top: 4px;
+  color: #d6d2c6;
+  line-height: 1.55;
+}
+
+.hero-signature {
+position: relative;
+  filter: drop-shadow(0 0 3px rgba(0,0,0,0.6));
+  margin-top: 1.8rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  opacity: 0.55;
+  color: #e6dfc8;
+  font-family: "Cormorant Garamond", serif;
+  letter-spacing: 1px;
+
+}
+.hero-signature-role {
+  font-weight: 600;
+}
+.hero-signature-name {
+  font-style: normal;
+  opacity: 0.45;
+}
+
+.hero-signature::after {
+  content: "";
+  position: absolute;
+  left: -6px;
+  bottom: -6px;
+  width: 140%;
+  height: 28px;
+  background: radial-gradient(
+    ellipse at 50% 60%,
+    rgba(40,20,10,0.35),
+    transparent 70%
+  );
+filter: blur(6px);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+
     .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      font-size: 11px;
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* ← 가운데 정렬 핵심 */
+  width: 100%;
+  gap: 10px;
+  margin-top: 12px;
+}
 
     .hero-tag {
+text-align: center;
+  min-width: 260px;
       padding: 4px 10px;
-      border-radius: 999px;
+font-size: 0.72rem;
+      border-radius: 14px;
+letter-spacing: 0.5px;
       border: 1px solid rgba(216, 178, 106, 0.7);
       color: #f4ead9;
-      background: radial-gradient(
-        circle at 30% 0,
-        rgba(216, 178, 106, 0.32),
-        rgba(0, 0, 0, 0.3)
-      );
+      background: rgba(255, 240, 200, 0.05);
+  border: 1px solid rgba(255, 240, 200, 0.15);
+  color: #f3e9c8;
     }
 
     .hero-actions {
@@ -176,6 +369,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+display: none !important;
     }
 
     .btn {
@@ -215,6 +409,17 @@ background 0.15s,
     }
 
     .btn-ghost:hover {background: rgba(227, 90, 90, 0.14);  transform: translateY(-1px); }
+
+
+
+.site-footer {
+  margin-top: 80px;
+  padding: 24px 0;
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+}
+
 
     /* 섹션 제목 -------------------------------------------------- */
     .section-title {
@@ -423,6 +628,7 @@ align-items: center;
       margin-bottom: 8px;
       letter-spacing: 0.16em;
       text-transform: uppercase;
+      text-shadow: 0 0 6px rgba(216,178,106,0.35);
     }
 
     .info-body {
@@ -437,6 +643,28 @@ align-items: center;
       font-size: 12px;
       color: #789093;
     }
+
+
+
+
+.latin-title {
+  font-family: "Cinzel", serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  color: #d0bfae;
+  text-shadow: 0 0 10px rgba(200, 180, 160, 0.2);
+  border-left: 3px solid rgba(200, 180, 160, 0.4);
+  padding-left: 12px;
+}
+.info-body p {
+  line-height: 1.75;
+  color: #e4e0da;
+}
+
+
 
 
 
@@ -776,7 +1004,12 @@ margin-bottom: 18px;
 
 
 
-    
+    @keyframes subtleGlow {
+  0%   { text-shadow: 0 0 4px rgba(255,230,180,0.15); }
+  50%  { text-shadow: 0 0 8px rgba(255,240,200,0.32); }
+  100% { text-shadow: 0 0 4px rgba(255,230,180,0.15); }
+}
+
 
     
 
@@ -795,10 +1028,10 @@ margin-bottom: 18px;
         <span>오컬트 & 판타지 몬스터 백과</span>
       </div>
       <nav>
-        <a href="#monsters">몬스터 도감</a>
-        <a href="#about-world">세계관</a>
-        <a href="https://tumblbug.com" target="_blank">텀블벅</a>
-        <button id="logout-btn">로그아웃</button>
+         <a href="#monsters" class="nav-link">몬스터 도감</a>
+  <a href="#about-world" class="nav-link">세계관</a>
+  <a href="https://tumblbug.com" target="_blank" class="nav-link">텀블벅</a>
+  <button id="logout-btn" class="nav-link">로그아웃</button>
       </nav>
     </header>
 
@@ -808,28 +1041,67 @@ margin-bottom: 18px;
 
     <!-- 히어로 -->
     <section class="hero">
-      <div class="hero-header">
-        <div class="hero-kicker">ARCANE BESTIARY FILE</div>
-        <h1>차원 틈에서 흘러 들어온<br>몬스터들의 비밀 기록</h1>
-        <p class="hero-sub">
-          이 페이지는 네 소설 세계관 속에 존재하는 모든 오컬트·판타지 몬스터를 정리하는
-          “디지털 그리모와르”다. 각 개체의 상징, 서식, 약점, 금기와 의식을 한 곳에 모아
-          작가인 너와 독자 모두가 참고할 수 있는 몬스터 백과로 쓰인다.
 
-        </p>
+  <div class="hero-header">
 
-        <div class="hero-tags">
-          <span class="hero-tag">DARK FANTASY</span>
-          <span class="hero-tag">OCCULT SYMBOLISM</span>
-          <span class="hero-tag">MONSTER ENCYCLOPEDIA</span>
-        </div>
+    <!-- 왼쪽 칼럼 : 제목 + 본문 + 버튼 + 서명 -->
+    <div class="hero-left">
+      <div class="hero-kicker">ARCANE BESTIARY FILE</div>
 
-        <div class="hero-actions">
-          <button class="btn btn-primary" id="scroll-to-monsters">몬스터 도감 보기</button>
-          <button class="btn btn-ghost" id="scroll-to-world">세계관 설명 먼저 읽기</button>
-        </div>
+      <h1 class="hero-title">
+        차원 틈에서 흘러 들어온<br>
+        몬스터들의 비밀 기록
+      </h1>
+<div class="hero-title-divider"></div>
+
+      <p class="hero-description">
+        이 페이지는 오컬트와 판타지 장르 창작을 위한 참고 자료이자, 다양한 전승 속 몬스터를 한눈에 볼 수 있는 디지털 몬스터 백과로, 창작자와 독자가 필요할 때마다 쉽게 찾아볼 수 있도록 구성되었다.
+이곳에 수록된 정보는 세계관 설정, 장르적 아이디어 확장을 위한 기초 자료로 활용할 수 있다.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn btn-primary" id="scroll-to-monsters">
+          몬스터 도감 보기
+        </button>
+        <button class="btn btn-ghost" id="scroll-to-world">
+          세계관 설명 먼저 읽기
+        </button>
       </div>
-    </section>
+
+      <div class="hero-signature">
+        <span class="hero-signature-role">CUSTOS BESTIARII</span>
+        <span class="hero-signature-name">— Lichae</span>
+      </div>
+    </div>
+
+    <!-- 오른쪽 칼럼 : 라틴어 문장 + 3원칙 태그 -->
+    <div class="hero-right">
+      <div class="hero-motto">
+        <span class="hero-quote">
+          “Per aperturam umbrarum, veritas monstrorum revelatur.”<br>
+        </span>
+        <span class="hero-quote-kor">
+          - 그림자의 문이 열리면, 괴물들의 진실이 드러난다.<p>
+        </span>
+      </div>
+
+      <div class="hero-tags">
+        <span class="hero-tag">
+          <strong>ARCHIVA</strong> · 흩어진 전승을 하나의 기록으로 모은다
+        </span>
+        <span class="hero-tag">
+          <strong>DISC ERNE</strong> · 외형·상징·역사를 분리해 해부한다
+        </span>
+        <span class="hero-tag">
+          <strong>REFORMA</strong> · 네 세계관에 맞게 다시 재구성한다
+        </span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
 
     <!-- 몬스터 도감 -->
     <section id="monsters">
@@ -857,27 +1129,128 @@ margin-bottom: 18px;
     <section id="about-world" class="info-section">
       <div class="info-title">WORLD SETTING</div>
       <div class="info-body">
-         이 몬스터 백과는 하나의 작품이 아니라, 네가 쓰는 모든 시리즈에 공통으로 흐르는
-        “세계의 밑바닥 규칙”을 기록하는 용도다.<br>
-        각 개체의 기원, 소속 차원, 계약 방식, 금기를 일관된 양식으로 정리해 두면
-        후속권에서 설정이 꼬이는 일을 줄이고, 독자가 느끼는 세계의 깊이도 훨씬 풍부해진다.
+         이 세계는 하나의 층위가 아니라, 서로 맞물린 여러 장(層)의 세계가 겹쳐 흐르는 구조를 가진다.  <br>
+우리가 사는 현실은 그 가장 밝은 표면일 뿐, 그 아래에는 ‘어둠의 주파수’라 불리는 흐름이 미세하게 진동한다.  <br>
+몬스터라 불리는 존재들은 이 진동의 틈, 균열, 혹은 인간의 마음속 그림자가 응결된 자리에서 태어난다.<br><br>
+
+몬스터는 단순한 생물이 아니라, 세계 규칙이 만들어낸 ‘징후(徵候)’에 가깝다.<br>  
+악마는 계약을 통해 질서를 침식하며, 정령은 자연의 균형이 기울어진 곳에 스스로 모습을 드러낸다.  <br>
+고대의 괴수들은 세계가 아직 미성숙하던 시절의 잔재이고, 영혼계의 존재들은 인간의 욕망과 공포를 거울처럼 비춘다.<br><br>
+
+이 백과는 금서(禁書)처럼 모여든 기록들을 정리해, 세계의 틈새에 숨어 있는 진실을 한데 묶은 ‘그리모와르’다.  <br>
+모든 개체는 각기 다른 차원에서 흘러 들어왔으나, 모두 이 세계의 균열과 대응해 존재한다.  <br>
+몬스터를 이해한다는 것은 곧 세계의 구조, 역학, 금기, 그리고 인간 존재의 뒷면을 이해하는 일과 같다.<br><br>
+
+※ 이 기록은 세계의 틈새에서 관측된 현상만을 정리한 것이며, 아직 밝혀지지 않은 규칙이 더 존재하는 것으로 추정된다.
+
+
 
       </div>
     </section>
 
     <!-- ABOUT -->
     <section id="about-author" class="info-section">
-      <div class="info-title">ABOUT 작가</div>
+      <div class="info-title">ABOUT LICHAE</div>
       <div class="info-body">
-        오컬트 상징과 장르 문법을 사랑하는 웹소설 작가.<br>
-        이 페이지는 “설정 노트”와 “홍보용 아트북” 사이 어딘가에 놓인 혼종을 목표로 한다.
-        독자는 몬스터 도감을 탐험하면서 동시에 이야기에 사전적으로 침투하게 된다.
+       오래전부터 나는 한 가지 의문을 품어왔다. <br> 
+“이야기 속의 괴물들은 어디에서 오며, 왜 인간의 상상 속에서 끊임없이 모습을 바꿔 되살아나는가?”<br><br>
+
+문학과 오컬트는 서로 다른 길처럼 보이지만, 실상은 같은 뿌리를 공유한다. <br> 
+두 세계 모두 ‘보이지 않는 것을 서술하는 기술’이며, 인간이 이해하지 못한 영역을 낱낱이 기록하려는 충동에서 시작된다.  <br>
+나는 오랫동안 그 충동에 매료되어, 수많은 신화·민담·종교·장르 서사를 넘나들며  
+보이지 않는 존재들에 대한 기록을 모으고 해석해왔다.<br><br>
+
+이 몬스터 백과는 단순한 흥미나 호기심에서 비롯된 프로젝트가 아니다.  <br>
+이것은 이야기 창작자로서의 책임, 그리고 세계를 설명하려는 집요한 의지에서 비롯되었다.  <br>
+괴물은 서사 속에서 공포가 아니라, ‘진실의 그림자’로 기능한다.  <br>
+그 실루엣을 제대로 이해할수록, 우리는 인간이란 존재의 심연을 더 깊이 들여다볼 수 있다.<br><br>
+
+나는 이 백과가 독자들에게 두 가지 시선을 제공하길 바란다.  <br>
+하나는 창작을 위한 참고서로서의 시선, 다른 하나는 세계를 다른 각도로 바라보게 만드는 비의(秘意)의 시선이다.  <br><br>
+
+이 기록집은 완결된 책이 아니다.  <br>
+세계는 늘 변하고, 괴물은 시대와 인간의 욕망에 따라 다시 태어난다.  <br>
+따라서 이 백과 또한 ‘진행 중인 그리모와르’로 남을 것이다.<br><br>
+
+당신이 이곳에서 새로운 상상력과 통찰을 발견하길 바란다.  <br>
+그리고 언젠가, 당신만의 몬스터와 세계를 창조하길 바란다.  <br>
+그때 이 책이 조금이라도 길잡이가 된다면, 그것으로 충분하다.<br><br>
+
+<h2 class="latin-title">PHILOSOPHIA SCRIPTORUM</h2>
+  <p>
+글을 쓴다는 행위는 세계의 틈을 들여다보는 작업이다.  <br>
+어두운 숲에서 길을 잃었을 때, 작가는 빛을 찾는 사람이 아니라 빛이 닿지 않는 곳을 먼저 훑어보는 사람이다.<br><br>
+
+나는 창작을 ‘해석’이 아닌 ‘관찰’이라 생각한다.  <br>
+괴물과 신화적 존재들은 인간이 억눌러온 감정과 욕망의 화석이며, 그 화석을 긁어내 형상을 드러내는 것이 작가의 의무다.<br><br>
+
+내 철학은 단순하다.  <br>
+“가능한 한 깊이 파고들고, 가능한 한 정확히 묘사하며, 가능한 한 아름답게 기록할 것.”<br>
+이 세 가지 원칙은 세계를 설명하기 위한 도구이자, 독자가 서사 속에서 길을 잃지 않도록 돕는 등불이다. <br><br>
+</p>
+
+ <h2 class="latin-title">INTENTIO BESTIARII</h2>
+  <p>
+이 백과는 수많은 전승과 민담, 종교적 공포, 문학적 상상력 속에서 등장해 온 존재들을 현대 독자의 언어로 다시 정리하려는 시도다.<br><br>
+
+세상의 몬스터는 단순히 ‘무섭기 때문’에 기억되는 것이 아니다.  <br>
+그들은 시대마다 다르게 변주되며, 인간의 심리와 사회적 공포를 비추는 거울로 기능한다.  <br><br>
+
+따라서 이 책은 괴물을 단순한 공격력과 능력치의 대상이 아닌,  인간이 만들어낸 상징 구조 그 자체로 기록한다.<br><br>
+
+이 백과의 목적은 다음 두 가지다.<br><br>
+
+1. 창작자를 위한 기반 자료 <br>
+   새로운 이야기의 재료가 될 수 있는 ‘정제된 상징’을 제공한다.<br><br>
+
+2. 독자를 위한 사유의 장<br>
+   괴물을 이해하는 것은 결국 인간을 이해하는 일이기 때문이다. <br><br>
+</p>
+
+<h2 class="latin-title">METHODUS OCCULTI INQUISITIONIS</h2>
+  <p>
+나는 괴물을 ‘발명’하는 것이 아니라 ‘발굴’한다고 믿는다.  <br>
+모든 괴물은 인간의 무의식 속에 이미 존재하며, 작가가 하는 일은 그 층위를 파고들어 실체를 끌어올리는 일이다.<br><br>
+
+연구 과정은 세 단계로 이루어진다.<br><br>
+
+<b>1. 기록 — Archiving</b><br>
+   신화, 민담, 종교 문헌, 고대 주술서, 현대 장르문학까지 모든 출처를 하나의 층위로 묶어 정리한다.<br><br>
+
+<b>2. 해부 — Dissection</b><br>
+   존재의 시각적 특징, 상징적 의미, 시대별 변화를 분석하며 그 속에 숨은 공포·욕망·윤리 구조를 낱낱이 분리한다.<br><br>
+
+<b>3. 재구성 — Reformation</b><br>
+   현대 감각으로 재탄생시켜 독자가 이해할 수 있는 형태로 꺼낸다.<br><br>
+  </p>
+
+<h2 class="latin-title">NUNTIUS AD LECTOREM</h2>
+  <p>
+당신이 이 백과를 펼친 순간, 이미 이 세계의 일부가 되었다.  <br>
+여기 적힌 존재들은 단순한 괴물이 아니라, 당신 자신이 두려워하거나 몰랐던 ‘또 다른 얼굴’일지도 모른다.<br><br>
+
+나는 독자가 이곳에서 공포를 느끼길 바라지 않는다.  <br>
+오히려 **경외**, **탐구**, **상상력의 확장**을 경험하길 바란다.<br><br>
+
+만약 이 기록이 당신의 창작에 불을 붙이고, 혹은 세상을 다른 각도로 바라보게 한다면, 이 백과의 목적은 이미 충분히 달성된 것이다.<br><br>
+
+이 책은 완성되지 않았다.  <br>
+괴물이 사라지지 않는 한, 이 백과 또한 끝을 맞이하지 않을 것이다.  <br><br>
+</p>
+
+
+
       </div>
     </section>
 
-    <footer class="footer">
-      © 2025 Occult &amp; Fantasy Monster Bestiary. All rights reserved.
-    </footer>
+<footer class="site-footer">
+  <p>
+    본 웹 도감의 모든 콘텐츠는 창작 참고용 자료이며, 무단 재배포 및 상업적 재사용을 금합니다.  © 2025 Occult &amp; Fantasy Monster Bestiary, 리채 All rights reserved.
+  </p>
+</footer>
+
+
+  
   </div>
 
   <!-- 모달 --------------------------------------------------------- -->
@@ -1003,7 +1376,7 @@ document.addEventListener("contextmenu", function (e) {
   short: "죽은 사람이 다시 움직이며 사람을 물어뜯는 괴물. 물리면 같은 좀비가 된다.",
   keywords: ["감염", "시체", "전염", "포스트 아포칼립스"],
   description: {
-    "특징": "좀비는 **원래 아이티의 부두교 전설에서 나온 “움직이는 시체”다. 처음의 좀비는 마법이나 주술에 의해 되살아나 다른 사람의 명령을 따르는 노예 같은 존재였다. 이때의 좀비는 사람을 마구 잡아먹는 괴물이 아니라, 의지가 없는 살아 있는 시체에 가까웠다.\n\n하지만 시간이 지나 영화와 게임으로 만들어지면서, 지금 우리가 아는 사람을 물어뜯고 감염시키는 괴물로 모습이 바뀌었다. 현대의 좀비는 보통 다음과 같은 특징을 가진다.\n\n이미 죽은 몸이라 고통을 느끼지 못한다.\n\n생각을 거의 하지 못하고, 본능적으로 사람만 쫓아간다.\n\n사람을 물면 바이러스가 옮아, 물린 사람도 좀비가 된다.\n\n다리가 부러지거나 몸이 망가져도 기어오며 계속 움직인다.\n\n대부분은 느릿느릿 걷는 느린 좀비지만, 어떤 작품에서는 전력질주하는 빠른 좀비도 나온다.\n\n좀비의 지능은 작품마다 다르지만, 보통은 말을 하지 못하고 도구를 못 쓰며 계단도 제대로 오르지 못하는 아주 낮은 지능으로 나온다. 그래서 좀비는 한 마리만 보면 약해 보이지만, 수백, 수천 마리가 한꺼번에 몰려오면 도망칠 곳이 사라지고 도시 전체가 무너지는 재난이 된다.",
+    "특징": "좀비는 원래 아이티의 부두교 전설에서 나온 “움직이는 시체”다. 처음의 좀비는 마법이나 주술에 의해 되살아나 다른 사람의 명령을 따르는 노예 같은 존재였다. 이때의 좀비는 사람을 마구 잡아먹는 괴물이 아니라, 의지가 없는 살아 있는 시체에 가까웠다.\n\n하지만 시간이 지나 영화와 게임으로 만들어지면서, 지금 우리가 아는 사람을 물어뜯고 감염시키는 괴물로 모습이 바뀌었다. 현대의 좀비는 보통 다음과 같은 특징을 가진다.\n\n이미 죽은 몸이라 고통을 느끼지 못한다.\n\n생각을 거의 하지 못하고, 본능적으로 사람만 쫓아간다.\n\n사람을 물면 바이러스가 옮아, 물린 사람도 좀비가 된다.\n\n다리가 부러지거나 몸이 망가져도 기어오며 계속 움직인다.\n\n대부분은 느릿느릿 걷는 느린 좀비지만, 어떤 작품에서는 전력질주하는 빠른 좀비도 나온다.\n\n좀비의 지능은 작품마다 다르지만, 보통은 말을 하지 못하고 도구를 못 쓰며 계단도 제대로 오르지 못하는 아주 낮은 지능으로 나온다. 그래서 좀비는 한 마리만 보면 약해 보이지만, 수백, 수천 마리가 한꺼번에 몰려오면 도망칠 곳이 사라지고 도시 전체가 무너지는 재난이 된다.",
     "사냥법": "좀비를 쓰러뜨리는 가장 확실한 방법은 머리를 파괴하는 것이다.\n\n머리를 쏘거나 부수면 즉시 멈춘다.\n\n심장을 찔러도 멈추지 않는 경우가 많다.\n\n팔, 다리가 잘려도 기어오며 공격한다.\n\n불로 태우는 것도 매우 효과적이다.\n\n또한 좀비는 소리에 매우 민감하다. 큰 소리를 내면 그쪽으로 몰려오기 때문에, 일부러 소리로 유인해서 다른 방향으로 끌고 가거나 함정으로 모아서 처리하는 방법도 자주 쓰인다.\n\n중요한 점은 절대로 물리면 안 된다는 것이다. 작은 상처 하나로도 감염되어, 얼마 후 스스로 좀비가 된다.",
     "기원": "좀비의 가장 오래된 기원은 아이티의 부두교 신앙이다. 이곳에서는 마법사인 보코르가 약과 주술을 써서 사람을 가사상태로 만든 뒤, 죽은 사람처럼 묻었다가 다시 꺼내 노예처럼 부려먹는다는 믿음이 있었다. 이 전설이 바로 “좀비”의 시작이다.\n\n“좀비(zombie)”라는 말은 아프리카 콩고 지역 언어에서 영혼, 유령, 신비한 존재를 뜻하는 말에서 나왔다.\n\n현대적인 좀비의 모습은 1968년 영화 **〈살아 있는 시체들의 밤〉**을 통해 완전히 정착되었다.\n\n이 영화 이후로 좀비는 바이러스, 감염, 세계 멸망이라는 설정과 함께 전 세계로 퍼진 괴물이 되었다. 지금의 좀비는 단순한 괴물이 아니라, 전염병의 공포, 사회 붕괴, 인간의 이기심과 두려움을 상징하는 재난의 상징적인 존재가 되었다."
   }
@@ -1031,9 +1404,9 @@ document.addEventListener("contextmenu", function (e) {
   short: "원래는 “존재, 생명체”라는 뜻이었으나, 현대 판타지에서는 죽어서 되살아난 언데드 존재를 가리키는 이름이 된 고대 유럽의 망령",
   keywords: ["망령", "언데드", "저주"],
   description: {
-    "특징": "와이트(wight)는 처음부터 괴물의 이름이 아니었다. 고대 영어 wiht, 고대 노르드어 vættr는 원래 사람, 동물, 정령, 눈에 보이든 보이지 않든 “이 세상에 존재하는 모든 것”을 뜻하는 말이었다.\n\n그러나 중세를 지나며 이 말은 점점 보통의 인간이 아닌 존재, 자연을 벗어난 존재, 영적인 존재를 가리키는 방향으로 굳어졌다. 특히 북유럽과 영국 전승에서는 와이트가 무덤, 땅, 집, 숲, 나라를 지키는 영적 존재로 여겨졌다.\n\n이 개념이 현대 판타지로 넘어오면서 뜻이 크게 변한다. 지금의 와이트는 대부분 다음과 같은 특징을 가진다.\n\n죽은 사람이 강한 원한이나 저주로 되살아난 언데드\n\n몸은 차갑고, 숨도 거의 쉬지 않는다.\n\n살이 남아 있는 시체이거나, 반쯤 말라붙은 모습이다.\n\n지능이 있으며, 단순한 좀비와 다르게 기억과 판단 능력이 있다.\n\n생자의 생명력, 체온, 정신력을 빼앗는 존재로 묘사되기도 한다.\n\n가까이 다가오면 싸늘한 냉기와 죽음의 기운이 퍼진다.\n\n즉, 와이트는 **“생전의 의식을 일부 유지한 채, 죽음에 묶여 있는 언데드”**라는 성격을 가진다. 좀비처럼 무작정 달려드는 괴물이 아니라, 묘하게 조용하고, 집요하며, 끈질긴 망령에 가깝다.",
+    "특징": "와이트(wight)는 처음부터 괴물의 이름이 아니었다. 고대 영어 wiht, 고대 노르드어 vættr는 원래 사람, 동물, 정령, 눈에 보이든 보이지 않든 “이 세상에 존재하는 모든 것”을 뜻하는 말이었다.\n\n그러나 중세를 지나며 이 말은 점점 보통의 인간이 아닌 존재, 자연을 벗어난 존재, 영적인 존재를 가리키는 방향으로 굳어졌다. 특히 북유럽과 영국 전승에서는 와이트가 무덤, 땅, 집, 숲, 나라를 지키는 영적 존재로 여겨졌다.\n\n이 개념이 현대 판타지로 넘어오면서 뜻이 크게 변한다. 지금의 와이트는 대부분 다음과 같은 특징을 가진다.\n\n죽은 사람이 강한 원한이나 저주로 되살아난 언데드\n\n몸은 차갑고, 숨도 거의 쉬지 않는다.\n\n살이 남아 있는 시체이거나, 반쯤 말라붙은 모습이다.\n\n지능이 있으며, 단순한 좀비와 다르게 기억과 판단 능력이 있다.\n\n생자의 생명력, 체온, 정신력을 빼앗는 존재로 묘사되기도 한다.\n\n가까이 다가오면 싸늘한 냉기와 죽음의 기운이 퍼진다.\n\n즉, 와이트는 “생전의 의식을 일부 유지한 채, 죽음에 묶여 있는 언데드”라는 성격을 가진다. 좀비처럼 무작정 달려드는 괴물이 아니라, 묘하게 조용하고, 집요하며, 끈질긴 망령에 가깝다.",
     "사냥법": "와이트는 단순한 물리 공격만으로는 쉽게 쓰러지지 않는다. 전승과 판타지 설정에서 공통적으로 통하는 방법은 다음과 같다.\n\n성스러운 힘: 성수, 기도, 축복받은 무기\n\n불: 육체와 저주를 동시에 태운다.\n\n저주를 만든 원인 제거: 묘를 제대로 다시 매장하거나 원한의 대상이 사라지거나 봉인 의식을 완성하면 자연히 소멸하기도 한다. 일반 무기로 쓰러뜨릴 수는 있으나, 완전히 파괴하지 않으면 다시 일어나는 경우가 많다.",
-    "기원": "와이트의 기원은 게르만족과 북유럽 신화권 전반에 걸쳐 있다. 고대 영어 with, 고대 노르드어 vættr, 스웨덴어 vätte, 덴마크어 vætte. 이 모든 말은 원래 **“존재, 생명체, 무엇인가 있다”**라는 뜻이었다.\n\n북유럽에서는 와이트가 땅의 수호령(land wight), 집을 지키는 정령, 숲과 무덤에 깃든 존재로 등장하며, 꼭 악한 것은 아니었다. 하지만 중세 기독교 시대를 거치며 비인간적인 영적 존재, 죽은 자의 혼령, 저주받은 존재로 이미지가 점점 어두워졌고, 20세기 이후 톨킨, D&D 같은 판타지 작품 속에서 **“지능을 가진 언데드 몬스터”**라는 의미로 완전히 고정되었다.\n\n그래서 와이트는 부두 좀비처럼 노예는 아니고, 레버넌트처럼 순수 복수심만의 존재도 아니며, 구울처럼 식인 괴물도 아니고, **“죽음과 영혼, 저주가 뒤섞인 고대형 언데드”**라는 독자적인 위치를 가진다."
+    "기원": "와이트의 기원은 게르만족과 북유럽 신화권 전반에 걸쳐 있다. 고대 영어 with, 고대 노르드어 vættr, 스웨덴어 vätte, 덴마크어 vætte. 이 모든 말은 원래 “존재, 생명체, 무엇인가 있다”라는 뜻이었다.\n\n북유럽에서는 와이트가 땅의 수호령(land wight), 집을 지키는 정령, 숲과 무덤에 깃든 존재로 등장하며, 꼭 악한 것은 아니었다. 하지만 중세 기독교 시대를 거치며 비인간적인 영적 존재, 죽은 자의 혼령, 저주받은 존재로 이미지가 점점 어두워졌고, 20세기 이후 톨킨, D&D 같은 판타지 작품 속에서 “지능을 가진 언데드 몬스터”라는 의미로 완전히 고정되었다.\n\n그래서 와이트는 부두 좀비처럼 노예는 아니고, 레버넌트처럼 순수 복수심만의 존재도 아니며, 구울처럼 식인 괴물도 아니고, “죽음과 영혼, 저주가 뒤섞인 고대형 언데드”라는 독자적인 위치를 가진다."
   }
 },
 
@@ -1045,7 +1418,7 @@ document.addEventListener("contextmenu", function (e) {
   short: "보름달이 뜨는 밤, 인간이 늑대로 변해 이성을 잃고 날뛰는 저주받은 변신자",
   keywords: ["변신", "저주", "광폭화", "늑대", "감염"],
   description: {
-    "특징": "웨어울프는 전 세계 전승에서 등장하는 ‘늑대로 변하는 인간’으로, 모든 수인(獸人) 중 가장 널리 알려진 존재다. 이름은 고대 영어 *were(인간)*와 *wolf(늑대)*에서 왔으며, 말 그대로 ‘늑대가 되는 인간’이라는 뜻이다. 그리스어 명칭인 라이칸스로프(lycanthrope) 역시 같은 의미를 가진다.\n\n보통 평소에는 인간의 모습으로 살아가다가, 보름달이 뜨는 밤이 되면 강제로 변신하여 거대한 늑대 혹은 반인반수의 모습이 된다. 이때 신체 능력은 인간을 훨씬 뛰어넘어 괴력, 빠른 속도, 강한 재생력, 날카로운 발톱과 이빨을 갖추게 된다. 초기 전설의 웨어울프는 변신과 동시에 이성을 잃고 사람과 짐승을 가리지 않고 공격하는 존재로 묘사되었다. 부모, 친구, 연인조차 구분하지 못하고 해치는 존재였기에, ‘가장 가까운 공포’로 여겨졌다.\n\n웨어울프가 되는 원인은 지역마다 다르다. 이미 늑대인간에게 물려서 감염되거나, 마녀나 마법사의 저주, 늑대 가죽을 뒤집어쓰는 주술 의식, 특정 약초나 마법의 연고를 바르는 행위 등으로 변하게 된다고 전해진다. 변신 과정에서 옷이 찢어지기 때문에, 전승에서는 미리 옷을 벗어두지 않으면 영원히 인간으로 돌아올 수 없다는 이야기까지 등장한다.\n\n현대 창작물에서는 설정이 확장되어, 이성을 유지하는 웨어울프, 변신을 스스로 조절하는 웨어울프, 늑대가 아닌 다른 동물로 변하는 수인(테리안스로프)까지 파생되었다.\n\n또한 의학적으로는 선천성 전신 다모증(일명 늑대인간 증후군), 낭광증(스스로를 늑대라고 믿는 정신질환), 광견병 등이 전설의 과학적 기원으로 해석되기도 한다.",
+    "특징": "웨어울프는 전 세계 전승에서 등장하는 ‘늑대로 변하는 인간’으로, 모든 수인(獸人) 중 가장 널리 알려진 존재다. 이름은 고대 영어 were(인간)와 wolf(늑대)에서 왔으며, 말 그대로 ‘늑대가 되는 인간’이라는 뜻이다. 그리스어 명칭인 라이칸스로프(lycanthrope) 역시 같은 의미를 가진다.\n\n보통 평소에는 인간의 모습으로 살아가다가, 보름달이 뜨는 밤이 되면 강제로 변신하여 거대한 늑대 혹은 반인반수의 모습이 된다. 이때 신체 능력은 인간을 훨씬 뛰어넘어 괴력, 빠른 속도, 강한 재생력, 날카로운 발톱과 이빨을 갖추게 된다. 초기 전설의 웨어울프는 변신과 동시에 이성을 잃고 사람과 짐승을 가리지 않고 공격하는 존재로 묘사되었다. 부모, 친구, 연인조차 구분하지 못하고 해치는 존재였기에, ‘가장 가까운 공포’로 여겨졌다.\n\n웨어울프가 되는 원인은 지역마다 다르다. 이미 늑대인간에게 물려서 감염되거나, 마녀나 마법사의 저주, 늑대 가죽을 뒤집어쓰는 주술 의식, 특정 약초나 마법의 연고를 바르는 행위 등으로 변하게 된다고 전해진다. 변신 과정에서 옷이 찢어지기 때문에, 전승에서는 미리 옷을 벗어두지 않으면 영원히 인간으로 돌아올 수 없다는 이야기까지 등장한다.\n\n현대 창작물에서는 설정이 확장되어, 이성을 유지하는 웨어울프, 변신을 스스로 조절하는 웨어울프, 늑대가 아닌 다른 동물로 변하는 수인(테리안스로프)까지 파생되었다.\n\n또한 의학적으로는 선천성 전신 다모증(일명 늑대인간 증후군), 낭광증(스스로를 늑대라고 믿는 정신질환), 광견병 등이 전설의 과학적 기원으로 해석되기도 한다.",
     "사냥법": "웨어울프를 죽이는 가장 유명한 방법은 은(銀)으로 만든 무기다. 전승과 대중문화에서는 은탄환, 은검, 은창만이 웨어울프의 재생력을 뚫고 확실한 죽음을 줄 수 있는 무기로 여겨진다. 일반 무기도 상처는 입힐 수 있으나, 웨어울프는 빠르게 회복해 다시 싸운다.\n\n그 외에도 전승에서는 심장에 말뚝을 박고 십자가가 교차된 땅에 매장하며 성직자의 퇴마 의식을 치러야 완전히 잠든다고 믿었다.\n\n작품에 따라서는 머리를 완전히 파괴하거나 불태워야만 완전한 사망에 이르는 설정도 자주 등장한다.",
     "기원": "웨어울프의 기원은 하나로 정리되지 않는다. 고대 그리스에서는 신의 노여움을 사 늑대로 변한 인간(리카온)의 이야기가 가장 오래된 기록으로 남아 있으며, 헤로도토스는 일정 기간마다 늑대로 변하는 부족에 대한 기록도 남겼다.\n\n동유럽과 슬라브 지역에서는 늑대인간과 흡혈귀가 같은 뿌리에서 나뉘었으며, 초기에는 죽지 못하고 무덤에서 돌아다니는 존재로 여겨졌다.\n\n게르만과 북유럽 지역에서는 늑대 가죽을 뒤집어쓰고 늑대의 힘을 얻는 샤머니즘적 전사 전통(울프헤딘)이 존재했고, 이것이 후대의 변신 전설과 결합되며 오늘날의 웨어울프 이미지로 굳어졌다.\n\n중세 이후 교회와 마녀사냥의 영향으로 늑대인간은 악마와 결탁한 저주의 존재로 악마화되었고, 실제로 늑대인간 재판과 처형이 여러 지역에서 벌어졌다.\n\n현대에 이르러 웨어울프는 인간의 이성과 야성, 문명과 본능, 억눌린 분노와 폭력성을 동시에 상징하는 존재로 자리 잡았다. 그래서 웨어울프는 단순한 괴물이 아니라, 인간 안에 숨겨진 또 하나의 얼굴을 가장 극적으로 보여주는 변신 괴물로 남아 있다."
   }
@@ -1057,7 +1430,7 @@ document.addEventListener("contextmenu", function (e) {
   category: "인간형",
   type: "인간형",
   img: "images/08rougarou.jpeg",
-  short: "루가루는 프랑스계 북미 지역에 전해지는 늑대인간형 요괴로, 인간의 모습으로 숨어 살다가 밤이 되면 짐승으로 변해 사람과 가축을 해치는 저주받은 존재",
+  short: "프랑스계 북미 지역에 전해지는 늑대인간형 요괴로, 인간의 모습으로 숨어 살다가 밤이 되면 짐승으로 변해 사람과 가축을 해치는 저주받은 존재",
   keywords: ["변신", "저주", "늑대인간"],
   description: {
     "특징": "루가루(Rougarou)는 프랑스어 loup-garou에서 변형된 이름으로, 원래 뜻은 그대로 ‘늑대인간’이다. 그러나 북미, 특히 캐나다 퀘벡 지방과 미국 루이지애나의 프랑스계 이주민 사회에서는 유럽의 늑대인간 전승이 지역 문화와 결합되며 루가루라는 독자적 존재로 굳어졌다. 루가루는 낮에는 평범한 인간의 모습으로 살아가지만, 밤이 되면 늑대, 개, 곰, 혹은 반인반수의 괴물로 변신한다. 변신한 루가루는 눈이 붉게 빛나고, 몸은 털로 덮이며, 인간을 뛰어넘는 괴력과 빠른 속도를 지닌다.\n\n루가루의 가장 중요한 특징은 그것이 태생적인 괴물이 아니라 ‘벌을 받은 인간’이라는 점이다. 전승에 따르면 루가루는 종교적 계율을 어기거나, 금식을 지키지 않거나, 중대한 죄를 숨기고 살아온 사람이 변하게 된다. 특히 가톨릭 문화권에서는 사순절의 금육 규칙을 반복해서 어긴 사람이 루가루가 된다는 이야기가 널리 퍼져 있다. 즉 루가루는 악마와 계약한 괴물이라기보다, 죄의 대가로 저주를 뒤집어쓴 인간이다. 루가루는 변신한 동안 자신의 행동을 완전히 통제하지 못하고, 사람이나 가축을 해치고 난 뒤 다시 인간으로 돌아와 깊은 죄책감에 시달리는 존재로 묘사되는 경우도 많다. 어떤 이야기에서는 루가루가 저주를 풀기 위해 특정 기간 동안 아무에게도 정체를 들키지 않고 살아야 하며, 그 기간이 끝나면 비로소 인간으로 완전히 돌아올 수 있다고 전해진다.\n\n루이지애나의 프랑스계 크리올 문화에서는 루가루가 늪지대와 숲 주변을 배회하며 아이들을 겁주는 민담 속 존재로 자리 잡았고, 퀘벡 지역에서는 겨울밤에 마을을 떠도는 공포의 존재로 전해졌다. 이 때문에 루가루는 단순한 괴물이 아니라, 공동체의 규율을 어긴 자에게 내려지는 경고의 상징이자, 인간의 죄와 벌을 형상화한 존재로 이해된다.",
@@ -1584,7 +1957,7 @@ document.addEventListener("contextmenu", function (e) {
   }
 },
 
-       {
+{
   name: "아브라멜린 악마",
   category: "악마",
   type: "악마/지옥형",
@@ -1681,7 +2054,6 @@ document.addEventListener("contextmenu", function (e) {
     "기원": "공백"
   }
 },
-       
 
   // 필요한 만큼 계속 추가하면 됨
     ];
@@ -1771,7 +2143,3 @@ document.getElementById("detail-origin").textContent =
   </script>
 </body>
 </html>
-
-
-
-
