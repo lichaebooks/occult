@@ -905,7 +905,6 @@ height: 100%
     }
 
 
-오전 6:09 2025-12-12
 
 
 
@@ -995,13 +994,6 @@ margin-bottom: 18px;
 
 
 
-
-
-
-
-
-
-
     @keyframes subtleGlow {
   0%   { text-shadow: 0 0 4px rgba(255,230,180,0.15); }
   50%  { text-shadow: 0 0 8px rgba(255,240,200,0.32); }
@@ -1015,6 +1007,98 @@ margin-bottom: 18px;
       from { opacity: 0; transform: translateY(4px); }
       to   { opacity: 1; transform: translateY(0); }
     }
+
+
+
+/* ===== OBSERVER FLOAT (NON-INVASIVE) ===== */
+#observer-float{
+  position: fixed;
+
+ right: calc((100vw - 1200px) / 2 - 270px);
+ top: 120px;
+transform: none;
+
+  width: 172px;
+  z-index: 9999;
+
+
+  background: linear-gradient(180deg, rgba(4,18,24,.92), rgba(3,10,16,.85));
+  border: 1px solid rgba(227,90,90,.55);
+  border-radius: 16px;
+  padding: 12px 12px 10px;
+
+  box-shadow:
+    0 14px 34px rgba(0,0,0,.70),
+    0 0 22px rgba(227,90,90,.18);
+  backdrop-filter: blur(10px);
+  font-size: 11px;
+  letter-spacing: .06em;
+}
+#observer-float .obs-title{
+  font-family: "Cormorant Garamond","Noto Serif KR",serif;
+  font-size: 12px;
+  letter-spacing: .22em;
+  text-align:center;
+  color: rgba(255,240,220,.86);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+#observer-float .obs-row{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:10px;
+  padding: 6px 6px;
+  border-radius: 12px;
+  background: rgba(0,0,0,.14);
+  border: 1px solid rgba(216,178,106,.18);
+}
+#observer-float .obs-row b{
+  color: #ff4c4c;
+  text-shadow: 0 0 10px rgba(255,76,76,.25);
+}
+#observer-float .obs-btns{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+  margin-top: 8px;
+}
+#observer-float button{
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(227,90,90,.55);
+  background: rgba(227,90,90,.12);
+  color: rgba(243,239,231,.92);
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: .08em;
+}
+#observer-float button:hover{
+  transform: translateY(-1px);
+  background: rgba(227,90,90,.18);
+}
+#observer-float .obs-foot{
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(216,178,106,.18);
+  text-align:center;
+  color: rgba(243,239,231,.65);
+  font-size: 10px;
+  letter-spacing: .14em;
+}
+#observer-float .obs-timer{
+  display:block;
+  margin-top: 4px;
+  font-size: 11px;
+  color: rgba(255,240,220,.88);
+}
+@media (max-width: 980px){
+  /* 작은 화면에서도 계속 보이게: 크기만 살짝 축소 */
+  #observer-float{ right: 10px; width: 156px; }
+}
+
+
   </style>
 </head>
 <body>
@@ -1028,6 +1112,7 @@ margin-bottom: 18px;
       <nav>
          <a href="#monsters" class="nav-link">몬스터 도감</a>
   <a href="#about-world" class="nav-link">세계관</a>
+<a href="archive.html" class="nav-link">아카이브</a>
   <a href="tumblbug.com/occult_bestiary" target="_blank" class="nav-link">텀블벅</a>
   <button id="logout-btn" class="nav-link">로그아웃</button>
       </nav>
@@ -1228,7 +1313,7 @@ margin-bottom: 18px;
 여기 적힌 존재들은 단순한 괴물이 아니라, 당신 자신이 두려워하거나 몰랐던 ‘또 다른 얼굴’일지도 모른다.<br><br>
 
 나는 독자가 이곳에서 공포를 느끼길 바라지 않는다.  <br>
-오히려 **경외**, **탐구**, **상상력의 확장**을 경험하길 바란다.<br><br>
+오히려 경외, 탐구, 상상력의 확장을 경험하길 바란다.<br><br>
 
 만약 이 기록이 당신의 창작에 불을 붙이고, 혹은 세상을 다른 각도로 바라보게 한다면, 이 백과의 목적은 이미 충분히 달성된 것이다.<br><br>
 
@@ -1243,7 +1328,7 @@ margin-bottom: 18px;
 
 <footer class="site-footer">
   <p>
-    본 웹 도감의 모든 콘텐츠는 창작 참고용 자료이며, 무단 재배포 및 상업적 재사용을 금합니다.  © 2025 Occult &amp; Fantasy Monster Bestiary, 리채 All rights reserved.
+    본 웹 도감의 모든 콘텐츠는 창작 참고용 자료이며, 무단 재배포 및 상업적 재사용을 금합니다.  © 2026 Occult &amp; Fantasy Monster Bestiary, 리채 All rights reserved.
   </p>
 </footer>
 
@@ -1442,12 +1527,12 @@ document.addEventListener("contextmenu", function (e) {
   category: "인간형",
   type: "인간형",
   img: "images/09skinwalker.jpg",
-  short: "공백",
-  keywords: ["공백"],
+  short: "미국 남서부 나바호(Diné) 전승에 등장하는 금기적 존재로, 금지된 주술을 통해 동물의 가죽을 입고 짐승으로 변신하는 마법사이자 공동체를 해치는 사악한 존재",
+  keywords: ["변신","주술","금기","나바호"],
   description: {
-    "특징": "공백",
-    "사냥법": "공백",
-    "기원": "공백"
+    "특징": "스킨워커(Skinwalker)는 나바호어로 ‘이 네일두시이(yee naaldlooshii)’라 불리는 존재로, 직역하면 ‘네 발로 걷는 자’ 혹은 ‘가죽을 입고 걷는 자’에 가깝다. 이는 태생적인 괴물이 아니라, 본래 인간이었던 자가 강력하고 금지된 주술을 익히며 도덕적 금기를 어긴 끝에 변한 존재로 이해된다. 나바호 전승에서 스킨워커는 치료와 보호를 목적으로 하는 전통 주술과 정반대의 길을 택한 ‘마녀’로 분류되며, 공동체에 질병과 불행을 가져오는 존재로 극도로 경계된다.\n\n스킨워커의 핵심 능력은 동물의 가죽을 걸쳐 그 동물로 변신하는 것이다. 전승에 따르면 늑대, 코요테, 여우, 곰, 올빼미 등의 가죽이 자주 언급되며, 특히 밤에 활동하는 포식자나 불길함을 상징하는 동물이 선호된다. 변신한 스킨워커는 해당 동물의 외형과 능력을 지니지만, 눈빛이나 움직임에서 어딘가 부자연스러운 인간의 흔적이 남아 있다고 묘사되기도 한다. 이들은 빠른 이동, 강한 체력, 은밀한 침투 능력을 활용해 가축을 해치거나 사람을 위협한다고 전해진다.\n\n중요한 점은 스킨워커가 단순한 공포의 괴물이 아니라, 나바호 사회에서 ‘절대 입에 올리지 말아야 할 존재’라는 점이다. 전통적으로 그 이름을 직접 말하거나 자세히 논하는 것 자체가 불운을 부른다고 여겨져 왔으며, 이는 스킨워커 이야기가 외부 문화에서 소비되는 방식과 전승 내부의 인식 사이에 큰 간극이 있음을 보여준다. 스킨워커는 공포담의 주인공이라기보다, 공동체의 규범과 윤리를 배반한 인간이 어디까지 추락할 수 있는지를 상징하는 금기의 형상이다.",
+    "사냥법": "나바호 전승에서 스킨워커를 ‘사냥’하거나 물리치는 방식은 매우 제한적으로만 언급된다. 일반인이 맞서 싸우는 존재가 아니며, 오직 전통 지식과 의례를 갖춘 주술사나 공동체의 특정 인물만이 대응할 수 있다고 여겨진다. 일부 이야기에서는 스킨워커의 본명을 정확히 알고 부르는 것이 힘을 약화시킨다고 전해지지만, 이 또한 쉽게 실행할 수 없는 위험한 행위로 인식된다.\n\n더 중요한 대응은 물리적 제거보다 회피와 보호이다. 전통적으로는 의례, 축복, 공동체적 결속을 통해 스킨워커의 영향에서 벗어나는 것이 강조되며, 무기를 들고 맞서 싸운다는 발상은 후대의 민속 변형이나 현대적 해석에 가깝다. 즉 스킨워커는 쓰러뜨려야 할 괴수라기보다, 가까이해서는 안 되는 재앙으로 취급된다.",
+    "기원": "스킨워커 전승은 미국 남서부에 거주해 온 나바호 민족의 세계관과 주술 체계에서 비롯되었다. 나바호 사회에는 치유와 균형을 회복하는 긍정적 주술 전통이 존재하는 동시에, 이를 뒤집어 악의적으로 사용하는 금지된 길이 설정되어 있었다. 스킨워커는 바로 이 금지된 길을 선택한 인간의 최종적 모습으로 자리 잡았다.\n\n외부 문화에서 흔히 소비되는 ‘변신 괴물’ 이미지와 달리, 전통적 맥락에서 스킨워커는 특정 지역이나 시간에 무작위로 출몰하는 요괴가 아니다. 이는 공동체 내부의 윤리, 금기, 그리고 인간의 선택이 만들어낸 결과를 형상화한 존재이다. 따라서 스킨워커 전설은 단순한 공포담이 아니라, 나바호 문화에서 선과 악, 치유와 파괴를 가르는 경계선을 분명히 보여주는 상징적 이야기로 이해된다."
   }
 },
 
@@ -1456,12 +1541,12 @@ document.addEventListener("contextmenu", function (e) {
   category: "인간형",
   type: "인간형",
   img: "images/10shapeshifter.png",
-  short: "공백",
-  keywords: ["공백"],
+  short: "세계 각지의 신화와 민속에서 공통적으로 등장하는 변신 능력을 지닌 존재들의 총칭으로, 인간·동물·신적 형상을 자유롭게 오가는 초자연적 존재",
+  keywords: ["변신","위장","신화"],
   description: {
-    "특징": "공백",
-    "사냥법": "공백",
-    "기원": "공백"
+    "특징": "셰잎쉬프터(Shapeshifter)는 특정한 하나의 종이나 전승 속 괴물을 가리키는 명칭이 아니라, ‘형태를 바꾸는 능력’을 핵심 속성으로 지닌 존재들을 통칭하는 개념이다. 이들은 인간, 동물, 괴물, 혹은 신적 존재의 모습으로 변신할 수 있으며, 변신은 저주, 축복, 주술, 신성한 권능 등 다양한 원인에 의해 이루어진다.\n\n셰잎쉬프터는 북유럽, 켈트, 그리스, 북미 원주민, 아프리카, 동아시아 신화까지 거의 모든 문화권에서 확인된다. 북유럽 신화에서는 로키가 대표적인 셰잎쉬프터로, 성별과 종을 가리지 않고 자유롭게 모습을 바꾼다. 켈트 전승에서는 드루이드와 요정들이 변신 능력을 지녔으며, 그리스 신화에서는 제우스와 같은 신들이 인간이나 동물의 모습으로 변해 인간 세계에 개입한다. 아메리카 원주민 전승에서는 특정 주술사나 영적 존재가 동물로 변신하는 이야기가 널리 전해진다.\n\n공통적으로 셰잎쉬프터는 ‘경계에 선 존재’로 인식된다. 인간과 짐승, 신과 인간, 현실과 초현실 사이를 넘나들며, 정체성이 고정되지 않은 불안정한 존재로 묘사된다. 이 때문에 셰잎쉬프터는 단순한 능력자가 아니라, 속임수, 시험, 유혹, 혼란을 상징하는 역할을 맡는 경우가 많다. 변신은 생존과 위장의 수단이기도 하지만, 동시에 타인을 속이거나 규범을 교란하는 행위로 해석된다.",
+    "사냥법": "셰잎쉬프터는 단일한 존재가 아니므로 보편적인 ‘사냥법’은 존재하지 않는다. 전승에 따라 대응 방식은 크게 달라진다. 일부 문화권에서는 변신의 조건이나 한계를 파악하는 것이 가장 중요한 대응책으로 여겨졌다. 예를 들어 특정 시간, 장소, 의식이 없으면 본래 모습으로 돌아가지 못하거나, 진짜 이름을 알면 힘을 잃는 존재로 묘사되기도 한다.\n\n또한 많은 신화에서 셰잎쉬프터는 물리적으로 처치하는 대상이 아니라, 지혜나 통찰로 간파해야 할 존재로 등장한다. 변신을 꿰뚫어보는 눈, 즉 진실을 보는 능력을 지닌 영웅이나 성직자만이 그 정체를 밝혀낼 수 있다. 따라서 셰잎쉬프터에 대한 대응은 무력보다는 인식, 식별, 경계가 핵심이며, 성스러운 맹세, 금속, 주문, 진실을 강요하는 의식 등이 보조적 수단으로 등장한다.",
+    "기원": "셰잎쉬프터 개념의 기원은 인류 보편의 사고 구조와 깊게 연결되어 있다. 고대 사회에서 인간은 자연과 자신을 명확히 분리하지 않았으며, 인간과 동물, 신의 경계는 지금보다 훨씬 유동적이었다. 이러한 세계관 속에서 ‘형태를 바꾼다’는 것은 곧 다른 존재의 본질을 잠시 빌리거나 넘나드는 행위였다.\n\n민속학적으로 셰잎쉬프터는 인간의 이중성, 정체성의 불안, 사회적 가면을 상징한다. 겉모습과 본질이 다를 수 있다는 인식, 그리고 타인은 언제든 다른 존재일 수 있다는 두려움이 셰잎쉬프터 서사의 핵심이다. 이 때문에 셰잎쉬프터는 괴물일 수도, 신일 수도, 영웅일 수도 있으며, 선과 악 어느 한쪽으로 고정되지 않는다.\n\n결국 셰잎쉬프터는 특정 문화의 산물이 아니라, 인간 사회 전반에서 반복적으로 나타난 ‘변화와 경계’에 대한 상상력이 응축된 개념으로, 개별 몬스터의 상위 범주이자 신화적 원형으로 이해된다."
   }
 },
 
@@ -2979,5 +3064,142 @@ document.getElementById("detail-origin").textContent =
     document.getElementById("modal-backdrop").onclick =
       () => modal.classList.remove("show");
   </script>
+
+<!-- OBSERVER FLOAT UI (non-invasive) -->
+<div id="observer-float" aria-label="관측자 패널">
+  <div class="obs-title">OBSERVER</div>
+  <div class="obs-row">
+    <span>안정도</span>
+    <span><b id="obs-stability-float">--</b>%</span>
+  </div>
+  <div class="obs-btns" role="group" aria-label="관측 개입">
+    <button type="button" data-effect="+3">의식 보강</button>
+    <button type="button" data-effect="-5">위험 실험</button>
+    <button type="button" data-effect="+1">기록 정제</button>
+  </div>
+  <div class="obs-foot">
+    NEXT RITUAL
+    <span class="obs-timer" id="ritual-timer-float">--:--:--</span>
+  </div>
+</div>
+
+<script>
+/* ===== OBSERVER FLOAT BEHAVIOR (NON-INVASIVE) ===== */
+(function(){
+  const stabMain = document.getElementById('stabilityVal');      // existing HUD
+  const stabFloat = document.getElementById('obs-stability-float');
+  const panel = document.getElementById('observer-float');
+  if(!panel || !stabFloat) return;
+
+  function getStability(){
+    const n = stabMain ? Number(String(stabMain.textContent).replace(/[^0-9.]/g,'')) : NaN;
+    return Number.isFinite(n) ? n : 68;
+  }
+  function setStability(v){
+    const clamped = Math.max(0, Math.min(100, Math.round(v)));
+    if(stabMain) stabMain.textContent = clamped;
+    stabFloat.textContent = clamped;
+  }
+
+  setStability(getStability());
+
+  panel.querySelectorAll('button[data-effect]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const delta = Number(btn.dataset.effect) || 0;
+      setStability(getStability() + delta);
+    });
+  });
+
+  const timer = document.getElementById('ritual-timer-float');
+  if(timer){
+    const next = new Date();
+    next.setHours(24,0,0,0); // next midnight
+    const pad = (x)=>String(x).padStart(2,'0');
+    setInterval(()=>{
+      const diff = Math.max(0, next - new Date());
+      const h = Math.floor(diff/36e5);
+      const m = Math.floor((diff%36e5)/6e4);
+      const s = Math.floor((diff%6e4)/1e3);
+      timer.textContent = `${pad(h)}:${pad(m)}:${pad(s)}`;
+    }, 1000);
+  }
+})();
+</script>
+
+
+<style>
+/* === OBSERVER VERTICAL BAR OVERRIDE === */
+#observer-float{
+  position:fixed; right:0; top:120px;
+  width:72px; padding:10px 8px;
+  border-radius:18px 0 0 18px;
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  z-index:9999;
+}
+#observer-float .obs-title{font-size:11px; letter-spacing:.12em; margin-bottom:4px}
+#observer-float .obs-btns{display:flex; flex-direction:column; gap:8px}
+#observer-float button{padding:6px 4px; font-size:10px}
+.obs-gauge{display:flex; flex-direction:column; align-items:center; gap:6px}
+.gauge-bar{
+  width:18px; height:120px; border-radius:999px; overflow:hidden; position:relative;
+  background:rgba(255,255,255,.08); border:1px solid rgba(227,90,90,.45);
+}
+.gauge-fill{
+  position:absolute; bottom:0; width:100%;
+  background:linear-gradient(180deg, rgba(255,90,90,.95), rgba(255,90,90,.55));
+  box-shadow:0 0 12px rgba(255,90,90,.6);
+}
+.gauge-label{font-size:9px; text-align:center}
+</style>
+
+<script>
+(function(){
+  const host = document.getElementById('observer-float');
+  if(!host) return;
+
+  host.innerHTML = `
+    <div class="obs-title">OBSERVER</div>
+    <div class="obs-gauge">
+      <div class="gauge-bar"><div class="gauge-fill" id="obs-gauge-fill"></div></div>
+      <div class="gauge-label"><span>안정도</span> <b id="obs-stability">74%</b></div>
+    </div>
+    <div class="obs-btns">
+      <button data-effect="+3">의식 보강</button>
+      <button data-effect="-5">위험 실험</button>
+      <button data-effect="+1">기록 정제</button>
+    </div>
+    <div class="obs-foot">
+      <div>NEXT RITUAL</div>
+      <span class="obs-timer" id="ritual-timer"></span>
+    </div>
+  `;
+
+  const stabEl = document.getElementById('obs-stability');
+  const fillEl = document.getElementById('obs-gauge-fill');
+  let stability = parseInt((stabEl.textContent||'74').replace('%',''),10) || 74;
+  fillEl.style.height = stability + '%';
+
+  host.querySelectorAll('button').forEach(b=>{
+    b.onclick = ()=>{
+      stability = Math.max(0, Math.min(100, stability + Number(b.dataset.effect)));
+      stabEl.textContent = stability + '%';
+      fillEl.style.height = stability + '%';
+    };
+  });
+
+  const t=document.getElementById('ritual-timer');
+  if(t){
+    const next=new Date(); next.setHours(24,0,0,0);
+    setInterval(()=>{
+      const d=next-new Date();
+      const h=Math.floor(d/36e5),m=Math.floor(d%36e5/6e4),s=Math.floor(d%6e4/1e3);
+      t.textContent=`${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+    },1000);
+  }
+})();
+</script>
+
+
+
 </body>
 </html>
